@@ -49,6 +49,7 @@ type="button" value="Resume">Resume</button>
 {% block script %}
 <script>
     $(document).ready(function() {
+        responsiveVoice.clickEvent();
         responsiveVoice.cancel();
         setTimeout(responsiveVoice.speak('{{search_results.0.tospeak}}'),1500);
     });
