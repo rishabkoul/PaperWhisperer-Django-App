@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+<h1>Search for a Research Paper to listen to</h1>
+<h4>This app will fetch the papers from arxiv.org and pubmed and you could listen to them</h4>
+
+    <form action="search_result_papers">
+        <div class="form-group">
+          <label for="query_input">Query</label>
+          <input type="text" class="form-control" id="query_input" aria-describedby="queryHelp" placeholder="Enter query to search for research eg-sound classification,Covid etc" name="query" required>
+        </div>
+        <div class="form-group">
+            <label for="oldnessindays_input">Oldness in Days</label>
+            <input type="number" class="form-control" id="oldnessindays_input" aria-describedby="oldnessindaysHelp" placeholder="What is the maximum days old a paper needs to be?" name="oldnessindays" required>
+          </div>
+          <div class="form-group">
+            <label for="publication_input">Select the publication</label>
+            <select class="form-control" id="publication_input" name="publication">
+              <option>All</option>
+              <option>Arxiv</option>
+              <option>PubMed</option>
+            </select>
+          </div>
+        <div class="form-group">
+            <label for="maxnoofpapers_input">Max no of Papers from each Publication source</label>
+            <input type="number" class="form-control" id="maxnoofpapers_input" aria-describedby="maxnoofpapersHelp" placeholder="Enter the maximum no of paper to search from each publication source" name="maxnoofpapers" required>
+          </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+</div>
+{% endblock body %}
