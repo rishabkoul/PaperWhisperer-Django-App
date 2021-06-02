@@ -21,7 +21,7 @@
     </p>
     <p>
     <details>
-        <summary data-open="More Details" data-close="Less Details">Abstract - {{article.abstract}} <b id="showmorelink">Click to show more...</b></summary>
+        <summary>Abstract - {{article.abstract}} {% if article.abstract_full != '' %}<b id="showmorelink">Click to show more...</b>{% endif %}</summary>
         {{article.abstract_full}}
     </details>
 </p>

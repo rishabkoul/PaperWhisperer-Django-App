@@ -35,6 +35,7 @@ def get_articles_view(request):
             tospeak = "title "+(query_result.title or "") + \
                 " abstract "+(query_result.summary or "")
             tospeak = tospeak.replace("\n", " ")
+            query_result.summary = (query_result.summary or "")
             if len(query_result.summary.split()) > 100:
                 summary_short = " ".join(query_result.summary.split()[:99])
                 summary_full = " ".join(query_result.summary.split()[99:])
@@ -71,7 +72,15 @@ def get_articles_view(request):
                 " abstract "+(query_result.abstract or "")
             tospeak = tospeak.replace("\n", " ")
 
-            article = {"title": query_result.title, "abstract": query_result.abstract,
+            query_result.abstract = (query_result.abstract or "")
+            if len(query_result.abstract.split()) > 100:
+                summary_short = " ".join(query_result.abstract.split()[:99])
+                summary_full = " ".join(query_result.abstract.split()[99:])
+            else:
+                summary_short = query_result.abstract
+                summary_full = ""
+
+            article = {"title": query_result.title, "abstract": summary_short, "abstract_full": summary_full,
                        "authors": authors, "published": publication_date, "tospeak": tospeak}
             search_results.append(article)
 
@@ -89,7 +98,15 @@ def get_articles_view(request):
             tospeak = "title "+(query_result.title or "") + \
                 " abstract "+(query_result.summary or "")
             tospeak = tospeak.replace("\n", " ")
-            article = {"title": query_result.title, "abstract": query_result.summary,
+            query_result.summary = (query_result.summary or "")
+            if len(query_result.summary.split()) > 100:
+                summary_short = " ".join(query_result.summary.split()[:99])
+                summary_full = " ".join(query_result.summary.split()[99:])
+            else:
+                summary_short = query_result.summary
+                summary_full = ""
+
+            article = {"title": query_result.title, "abstract": summary_short, "abstract_full": summary_full,
                        "authors": authors, "published": query_result.updated, "tospeak": tospeak}
             search_results.append(article)
 
@@ -116,8 +133,15 @@ def get_articles_view(request):
             tospeak = "title "+(query_result.title or "") + \
                 " abstract "+(query_result.abstract or "")
             tospeak = tospeak.replace("\n", " ")
+            query_result.abstract = (query_result.abstract or "")
+            if len(query_result.abstract.split()) > 100:
+                summary_short = " ".join(query_result.abstract.split()[:99])
+                summary_full = " ".join(query_result.abstract.split()[99:])
+            else:
+                summary_short = query_result.abstract
+                summary_full = ""
 
-            article = {"title": query_result.title, "abstract": query_result.abstract,
+            article = {"title": query_result.title, "abstract": summary_short, "abstract_full": summary_full,
                        "authors": authors, "published": publication_date, "tospeak": tospeak}
             search_results.append(article)
 
